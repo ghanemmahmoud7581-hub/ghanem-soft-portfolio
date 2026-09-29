@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ghanem Soft - حلول برمجية احترافية للمتاجر والمدارس والمراكز الطبية" />
+    <meta name="keywords" content="برمجة, تطبيقات, مواقع, حلول رقمية, Ghanem Soft" />
+    <meta name="author" content="Ghanem Soft" />
+    <meta property="og:title" content="Ghanem Soft - حلول برمجية احترافية" />
+    <meta property="og:description" content="نقدم حلولاً برمجية متكاملة لأعمالك" />
+    <meta property="og:type" content="website" />
+    <title>Ghanem Soft - حلول برمجية احترافية | تطوير تطبيقات وأنظمة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <style>
+      :root {
+        --bg-primary: #040d1c;
+        --bg-secondary: #0a1829;
+        --bg-tertiary: #071d35;
+        --blue-main: #0c7bf0;
+        --blue-light: #1ad5ff;
+        --blue-lighter: #6ee7ff;
+        --blue-accent: #00d4ff;
+        --purple-accent: #7d5cff;
+        --text-primary: #eaf8ff;
+        --text-secondary: #a3bfd6;
+        --text-muted: #7a92ae;
+        --border-color: rgba(111, 214, 255, 0.72);
+        --card-bg: rgba(11, 27, 44, 0.86);
+        --card-bg-dark: rgba(7, 18, 30, 0.92);
+        --glow-color: rgba(0, 212, 255, 0.38);
+        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.35);
+        --shadow-glow: 0 0 24px rgba(26, 213, 255, 0.35);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-fast: all 0.2s ease-out;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Cairo', 'Inter', sans-serif;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        color: var(--text-primary);
+        direction: rtl;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 50%, rgba(12, 123, 240, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 50%, rgba(26, 213, 255, 0.08) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      .container {
+        width: min(1240px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      /* Header & Navigation */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(4, 13, 28, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(111, 214, 255, 0.15);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 80px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 900;
+      }
+
+      .logo-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+        border: 1px solid rgba(111, 214, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: var(--shadow-glow);
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+
+      .logo-text .name {
+        font-size: 1.8rem;
+        letter-spacing: -0.04em;
+      }
+
+      .logo-text .tagline {
+        font-size: 0.9rem;
+        color: var(--blue-light);
+        font-weight: 700;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 32px;
+        font-weight: 700;
+        color: var(--text-secondary);
+      }
+
+      .nav-menu a {
+        position: relative;
+        transition: color 0.25s ease;
+      }
+
+      .nav-menu a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background: var(--blue-light);
+        transition: width 0.25s ease;
+      }
+
+      .nav-menu a:hover {
+        color: var(--text-primary);
+      }
+
+      .nav-menu a:hover::after {
+        width: 100%;
+      }
+
+      .cta-button {
+        padding: 14px 28px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+        color: white;
+        font-weight: 800;
+        box-shadow: var(--shadow-glow);
+        transition: var(--transition-fast);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 32px rgba(26, 213, 255, 0.5);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 1px solid rgba(111, 214, 255, 0.3);
+        background: rgba(255, 255, 255, 0.03);
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .mobile-menu-toggle span {
+        width: 20px;
+        height: 2.5px;
+        background: var(--text-primary);
+        border-radius: 2px;
+        transition: var(--transition-fast);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 80px 0 60px;
+        min-height: 800px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-content {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 12px 20px;
+        background: rgba(12, 123, 240, 0.15);
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
+        color: var(--blue-lighter);
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.06em;
+        margin-bottom: 24px;
+        text-shadow: 0 4px 20px rgba(12, 123, 240, 0.2);
+      }
+
+      .hero h1 .gradient {
+        background: linear-gradient(90deg, #d4f7ff, #80ddff, #e6ffff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 32px;
+        max-width: 640px;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 48px;
+      }
+
+      .btn-secondary {
+        padding: 14px 28px;
+        border-radius: 12px;
+        border: 1.5px solid rgba(111, 214, 255, 0.5);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-primary);
+        font-weight: 800;
+        transition: var(--transition-fast);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--blue-light);
+        background: rgba(26, 213, 255, 0.1);
+        transform: translateY(-3px);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(140px, 1fr));
+        gap: 28px;
+      }
+
+      .stat {
+        padding: 20px;
+        border-radius: 16px;
+        background: var(--card-bg);
+        border: 1px solid rgba(111, 214, 255, 0.3);
+      }
+
+      .stat-number {
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: var(--blue-light);
+      }
+
+      .stat-label {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-top: 8px;
+      }
+
+      .hero-visual {
+        position: relative;
+        height: 600px;
+        animation: fadeInRight 0.8s ease-out 0.2s both;
+      }
+
+      .device-mockup {
+        position: absolute;
+        border-radius: 20px;
+        border: 2px solid var(--border-color);
+        background: var(--card-bg-dark);
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(26, 213, 255, 0.2);
+        overflow: hidden;
+      }
+
+      .laptop-mockup {
+        width: 480px;
+        height: 300px;
+        top: 80px;
+        right: 20px;
+        transform: rotate(-3deg);
+      }
+
+      .laptop-content {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(12, 66, 88, 0.9), rgba(7, 25, 39, 0.96));
+        border-radius: 18px;
+        padding: 16px;
+        border: 1px solid rgba(111, 214, 255, 0.3);
+      }
+
+      .screen-header {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .screen-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .chart {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        height: calc(100% - 28px);
+        gap: 16px;
+      }
+
+      .bar {
+        flex: 1;
+        background: linear-gradient(180deg, var(--blue-light), var(--blue-main));
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 0 20px rgba(26, 213, 255, 0.3);
+        transition: var(--transition-fast);
+      }
+
+      .bar:hover {
+        filter: brightness(1.3);
+      }
+
+      .phone-mockup {
+        width: 220px;
+        height: 440px;
+        bottom: 0;
+        right: 0;
+        transform: rotate(8deg);
+      }
+
+      .phone-content {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(12, 50, 74, 0.9), rgba(7, 22, 34, 0.96));
+        border-radius: 22px;
+        padding: 16px;
+        border: 1px solid rgba(111, 214, 255, 0.4);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .phone-header {
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--blue-lighter);
+        margin-bottom: 16px;
+      }
+
+      .phone-chart {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .mini-bar {
+        flex: 1;
+        background: linear-gradient(180deg, var(--blue-light), var(--blue-main));
+        border-radius: 6px 6px 0 0;
+        box-shadow: 0 0 16px rgba(26, 213, 255, 0.25);
+      }
+
+      /* Sections */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section.alt {
+        background: rgba(255, 255, 255, 0.01);
+        border-top: 1px solid rgba(111, 214, 255, 0.1);
+        border-bottom: 1px solid rgba(111, 214, 255, 0.1);
+      }
+
+      .section-header {
+        margin-bottom: 60px;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .section-badge {
+        display: inline-block;
+        padding: 12px 20px;
+        background: rgba(12, 123, 240, 0.12);
+        border: 1px solid rgba(111, 214, 255, 0.4);
+        border-radius: 999px;
+        color: var(--blue-lighter);
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+      }
+
+      .section h2 {
+        font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+        font-weight: 900;
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+        max-width: 900px;
+      }
+
+      /* Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .service-card {
+        padding: 28px 24px;
+        border-radius: 20px;
+        background: var(--card-bg);
+        border: 1px solid rgba(111, 214, 255, 0.4);
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .service-card:nth-child(1) { animation-delay: 0.1s; }
+      .service-card:nth-child(2) { animation-delay: 0.2s; }
+      .service-card:nth-child(3) { animation-delay: 0.3s; }
+      .service-card:nth-child(4) { animation-delay: 0.4s; }
+      .service-card:nth-child(5) { animation-delay: 0.5s; }
+      .service-card:nth-child(6) { animation-delay: 0.6s; }
+      .service-card:nth-child(7) { animation-delay: 0.7s; }
+      .service-card:nth-child(8) { animation-delay: 0.8s; }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--blue-light);
+        box-shadow: 0 0 30px rgba(26, 213, 255, 0.25);
+        background: linear-gradient(135deg, rgba(12, 123, 240, 0.15), rgba(26, 213, 255, 0.08));
+      }
+
+      .service-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(12, 123, 240, 0.25), rgba(26, 213, 255, 0.15));
+        border: 1px solid rgba(111, 214, 255, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .service-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 12px;
+        font-weight: 800;
+      }
+
+      .service-card p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        flex: 1;
+      }
+
+      /* Why Us Section */
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+      }
+
+      .why-card {
+        padding: 24px 20px;
+        border-radius: 18px;
+        background: var(--card-bg);
+        border: 1px solid rgba(111, 214, 255, 0.35);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 180px;
+        transition: var(--transition);
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .why-card:nth-child(1) { animation-delay: 0.1s; }
+      .why-card:nth-child(2) { animation-delay: 0.2s; }
+      .why-card:nth-child(3) { animation-delay: 0.3s; }
+      .why-card:nth-child(4) { animation-delay: 0.4s; }
+      .why-card:nth-child(5) { animation-delay: 0.5s; }
+
+      .why-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--blue-light);
+        background: linear-gradient(135deg, rgba(12, 123, 240, 0.12), rgba(26, 213, 255, 0.06));
+      }
+
+      .why-number {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+        border: 1px solid rgba(111, 214, 255, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+        box-shadow: 0 0 20px rgba(26, 213, 255, 0.3);
+      }
+
+      .why-card p {
+        color: var(--text-secondary);
+        font-weight: 700;
+        line-height: 1.7;
+      }
+
+      /* CTA Banner */
+      .cta-section {
+        padding: 60px 0;
+      }
+
+      .cta-banner {
+        padding: 40px 36px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(12, 53, 87, 0.85), rgba(7, 22, 37, 0.92));
+        border: 1px solid rgba(111, 214, 255, 0.45);
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(26, 213, 255, 0.15);
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .quote-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.4rem;
+        color: white;
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      .cta-text {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 800;
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 50px 0 40px;
+        border-top: 1px solid rgba(111, 214, 255, 0.1);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        align-items: center;
+      }
+
+      .contact-box {
+        padding: 24px 20px;
+        border-radius: 18px;
+        background: var(--card-bg);
+        border: 1px solid rgba(111, 214, 255, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 120px;
+        transition: var(--transition-fast);
+      }
+
+      .contact-box:hover {
+        border-color: var(--blue-light);
+        background: linear-gradient(135deg, rgba(12, 123, 240, 0.12), rgba(26, 213, 255, 0.06));
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 0 20px rgba(26, 213, 255, 0.25);
+      }
+
+      .contact-info p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+      }
+
+      .contact-info strong {
+        font-size: 1.1rem;
+        display: block;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .footer-brand .logo-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+
+      .footer-brand .logo-text .name {
+        font-size: 1.5rem;
+      }
+
+      .footer-brand .logo-text .tagline {
+        font-size: 0.8rem;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .hero-visual {
+          height: 450px;
+        }
+
+        .laptop-mockup {
+          width: 380px;
+          height: 240px;
+        }
+
+        .phone-mockup {
+          width: 180px;
+          height: 360px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
+        .logo-text .name {
+          font-size: 1.3rem;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .hero-grid {
+          min-height: auto;
+        }
+
+        .hero-visual {
+          min-height: 300px;
+        }
+
+        .laptop-mockup,
+        .phone-mockup {
+          position: relative;
+          transform: none !important;
+          margin-bottom: 20px;
+        }
+
+        .laptop-mockup {
+          width: 100%;
+          height: 200px;
+        }
+
+        .phone-mockup {
+          width: 100%;
+          height: 250px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: calc(100% - 16px);
+        }
+
+        .nav {
+          min-height: 70px;
+        }
+
+        .hero {
+          padding: 40px 0;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .section h2 {
+          font-size: 1.8rem;
+        }
+
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+        }
+
+        .cta-button,
+        .btn-secondary {
+          width: 100%;
+        }
+      }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">G</div>
+                <div class="logo-text">
+                    <div class="name">ghanem</div>
+                    <div class="tagline">Soft</div>
+                </div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="#services">الخدمات</a>
+                <a href="#why">لماذا نحن</a>
+                <a href="#contact">التواصل</a>
+            </nav>
+
+            <button class="mobile-menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="#contact" class="cta-button">تواصل معنا</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="badge">حلول برمجية احترافية</div>
+                    <h1>
+                        حلول برمجية
+                        <br />
+                        مصممة لنساعدك
+                        <br />
+                        <span class="gradient">أعمالك تنمو</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        نعمل على بناء أنظمة، مواقع، تطبيقات، ومشاريع رقمية متطورة تجعل أعمالك أكثر كفاءة واحترافية وسهولة في الإدارة.
+                    </p>
+
+                    <div class="hero-cta">
+                        <a href="#services" class="cta-button">استكشف الخدمات</a>
+                        <a href="#contact" class="btn-secondary">تواصل الآن</a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">مشروع منجز</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label">عميل راضي</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="device-mockup laptop-mockup">
+                        <div class="laptop-content">
+                            <div class="screen-header">
+                                <div class="screen-dot"></div>
+                                <div class="screen-dot"></div>
+                                <div class="screen-dot"></div>
+                            </div>
+                            <div class="chart">
+                                <div class="bar" style="height: 55%;"></div>
+                                <div class="bar" style="height: 70%;"></div>
+                                <div class="bar" style="height: 42%;"></div>
+                                <div class="bar" style="height: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-mockup phone-mockup">
+                        <div class="phone-content">
+                            <div class="phone-header">Overview</div>
+                            <div class="phone-chart">
+                                <div class="mini-bar" style="height: 35%;"></div>
+                                <div class="mini-bar" style="height: 58%;"></div>
+                                <div class="mini-bar" style="height: 42%;"></div>
+                                <div class="mini-bar" style="height: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">خدماتنا</div>
+                    <h2>نقدم حلولاً رقمية متكاملة لجميع احتياجات أعمالك</h2>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>تطبيقات Android</h3>
+                        <p>تطبيقات موبايل احترافية وسلسة مع تجربة مستخدم استثنائية.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>تطبيقات سطح المكتب</h3>
+                        <p>برامج قوية ومخصصة لأعمالك مع أداء عالي وموثوقية كاملة.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🧩</div>
+                        <h3>مواقع ويب احترافية</h3>
+                        <p>تصميم مواقع سريعة وآمنة وموافقة لجميع المتصفحات والأجهزة.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🛒</div>
+                        <h3>متاجر إلكترونية</h3>
+                        <p>منصات بيع متكاملة مع جميع وسائل الدفع والتسليم.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>أنظمة إدارة</h3>
+                        <p>حلول شاملة لإدارة المخزون والمبيعات والموارد البشرية.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🎓</div>
+                        <h3>منصات تعليمية</h3>
+                        <p>أنظمة إدارة الطلاب والقاعات والجداول والنتائج.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🩺</div>
+                        <h3>عيادات ومراكز طبية</h3>
+                        <p>إدارة شاملة للمواعيد والمرضى والفواتير والعلاجات.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>لوحات تحكم</h3>
+                        <p>تقارير تفاعلية وإحصائيات دقيقة لاتخاذ قرارات صحيحة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="section alt" id="why">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">لماذا Ghanem Soft</div>
+                    <h2>ما يميزنا عن الآخرين</h2>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-number">1</div>
+                        <p>أداء عالي ومستقر</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">2</div>
+                        <p>تصميم احترافي وعصري</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">3</div>
+                        <p>تطوير سريع وفعال</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">4</div>
+                        <p>دعم مستمر 24/7</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">5</div>
+                        <p>حلول مخصصة لك</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-banner">
+                    <div class="quote-icon">"</div>
+                    <p class="cta-text">إذا كنت تبحث عن شريك موثوق يفهم احتياجات أعمالك ويقدم حلولاً عملية وفعالة، فـ Ghanem Soft هو الخيار الأمثل لك.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="contact-box">
+                <div class="contact-icon">📞</div>
+                <div class="contact-info">
+                    <p>رقم الهاتف</p>
+                    <strong>0554731064</strong>
+                </div>
+            </div>
+
+            <div class="footer-brand">
+                <div class="logo-icon">G</div>
+                <div class="logo-text">
+                    <div class="name">ghanem</div>
+                    <div class="tagline">Soft</div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-info">
+                    <p>البريد الإلكتروني</p>
+                    <strong>ghanem.soft1@gmail.com</strong>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
